@@ -1,0 +1,55 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "London Transition - Connecting Transition Initiatives Across Greater London",
+  description = "Connecting Transition Town initiatives across Greater London. Find your local group working on climate resilience, community food, and sustainable transport."
+} = Astro.props;
+
+const siteUrl = "https://london-transition.org.uk";
+const ogImage = `${siteUrl}/images/logo.png`;
+---
+
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content={description}>
+  <meta name="keywords" content="Transition Towns, London, sustainability, climate change, community resilience, peak oil, local food">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={siteUrl}>
+  <meta property="og:title" content="London Transition">
+  <meta property="og:description" content="A network of Transition initiatives in Greater London working on climate resilience and community sustainability.">
+  <meta property="og:image" content={ogImage}>
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="London Transition">
+  <meta name="twitter:description" content="A network of Transition initiatives in Greater London working on climate resilience and community sustainability.">
+  <meta name="twitter:image" content={ogImage}>
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href={siteUrl}>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/styles/global.css">
+</head>
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <slot />
+</body>
+</html>

@@ -1,0 +1,51 @@
+---
+import { getInitiatives, type Initiative } from '../lib/strapi';
+
+// Fetch initiatives from Strapi at build time
+const initiatives = await getInitiatives();
+
+// Helper to format website URL for display
+function formatWebsiteDisplay(url: string | null): string {
+  if (!url) return '';
+  return url
+    .replace(/^https?:\/\//, '')
+    .replace(/\/$/, '');
+}
+---
+
+<section class="directory-section" id="directory">
+  <h2>Transition Initiatives in London</h2>
+  
+  {initiatives.length > 0 ? (
+    <ul class="directory-list">
+      {initiatives.map((initiative: Initiative) => (
+        <li class="directory-item">
+          <span class="directory-item-name">{initiative.name}</span>
+          {initiative.website && (
+            <a 
+              href={initiative.website} 
+              class="directory-item-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {formatWebsiteDisplay(initiative.website)}
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="directory-fallback">
+      <em>Unable to load initiatives. Please check back later or contact us for assistance.</em>
+    </p>
+  )}
+</section>
+
+<style>
+  .directory-fallback {
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+    text-align: center;
+  }
+</style>

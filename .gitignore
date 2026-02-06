@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+
+# Strapi CMS
+cms/.tmp
+cms/.cache
+cms/build
+cms/node_modules
+cms/.env
+cms/public/uploads
+
+# Astro Frontend
+frontend/node_modules
+frontend/dist
+frontend/.astro
+frontend/.env
+
+# Environment files (all)
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*

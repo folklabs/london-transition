@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "initiatives",
+  "info": {
+    "singularName": "initiative",
+    "pluralName": "initiatives",
+    "displayName": "Initiative",
+    "description": "A Transition Town initiative in Greater London"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "website": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["active", "inactive", "unknown"],
+      "default": "unknown",
+      "required": true
+    },
+    "borough": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "latitude": {
+      "type": "decimal"
+    },
+    "longitude": {
+      "type": "decimal"
+    },
+    "rssFeedUrl": {
+      "type": "string"
+    }
+  }
+}
